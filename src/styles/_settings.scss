@@ -1,0 +1,118 @@
+
+$ff_heading: 'Fira Sans', sans-serif;
+$ff_body: 'Open Sans', sans-serif;
+
+/**
+* FONT SIZES 
+**/
+$s_small: 16px;
+$s_medium: 24px;
+$s_large: 28px;
+
+/**
+* LINE HEIGHT 
+**/
+$lh_small: 26px;
+$lh_medium: 34px;
+$lh_large: 38px;
+
+/**
+* FONT WEIGHTS 
+**/ 
+$fw_regular: 400;
+$fw-bold: 700;
+$fw_extra-bold: 900;
+
+/**
+* COLORS 
+**/
+$c_base: rgb(12, 11, 11);
+$c_inverse: #fffffa;
+
+$c_main: #74E4D7;
+$c_main_dark: darken($c_main, 10%);
+
+//$c_secondary: rgba(245, 70, 122, 0.932);
+$c_secondary: #FF6166;
+
+$c_auxiliar: #ffff66;
+
+$c_action: $c_main;
+$c_danger: #E50000;
+
+$c_font: $c_base;
+
+/**
+* BORDERS
+**/
+$b-large_width: 10px;
+$border-medium: 6px solid $c_base;
+$border-large: $b-large_width solid $c_base;
+
+/**
+ * MARGINS
+**/
+$m_small: 8px;
+$m_medium: 16px;
+$m_large: 32px;
+
+
+$max_width_content: 900px;
+$h_header: 100px;
+
+/*
+*
+* FONT MIXINS
+*
+*/
+
+@mixin body {
+  font-family: $ff_body;
+  color: $c_font;
+  font-size: $s_small;
+  line-height: $lh_small;
+  font-weight: $fw_regular;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+@mixin heading($style: bold) {
+  font-size: $s_large;
+  line-height: $lh_medium;
+  font-family: $ff_heading;
+  font-weight: $fw_extra-bold;
+  @if $style == 'medium' {    
+    font-weight: $fw_bold;
+  }
+  margin: $m_medium 0;
+  color: $c_font;  
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+@mixin button-text {
+  font-family: $ff_body;
+  color: $c_font;
+  font-size: $s_small;
+  @media screen and (min-width: $beta_query) {
+    font-size: $s_medium;
+  }
+  line-height: $lh_medium;
+  font-weight: $fw-bold;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+* LAYOUT BREAKPOINTS
+*/
+
+$beta_screen: 768; 
+$charlie_screen: 1024;
+$delta_screen: 1200; 
+$echo_screen: 1980;
+
+$beta_query: $beta_screen + 0px;
+$charlie_query: $charlie_screen + 0px;
+$delta_query: $delta_screen + 0px;
+$echo_query: $echo_screen + 0px;
