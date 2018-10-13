@@ -3,8 +3,8 @@ import { connect } from "react-redux"
 import store from "store"
 import { getUser } from "actions/user-actions"
 
-import { WAITING, LOADING } from "utils/network-states"
-import { EMPTY_USER_ERROR, INVALID_USER_ERROR } from "utils/constants"
+import { ERROR, LOADING } from "utils/network-states"
+import { EMPTY_USER_ERROR, INVALID_USER_ERROR, NETWORK_ERROR } from "utils/constants"
 
 import Loading from "components/loading/loading"
 import Login from "components/login/login"
@@ -25,6 +25,12 @@ class LoginContainer extends React.Component {
         ...this.state,
         login: event.target.value,
         validationError: error
+      });
+    }
+    if(prevProps.networkState !== this.props.networkState && this.props.networkState === ERROR){
+      this.setState({
+        ...this.state,
+        validationError: NETWORK_ERROR
       });
     }
   }

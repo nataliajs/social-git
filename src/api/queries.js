@@ -3,8 +3,54 @@ import GraphQLClient from './client'
 const GET_USER = `
   {
     user(login: "nataliajs") {
+      id
       name
       url
+      following (first: 10){
+        nodes{
+            id
+            name
+            url
+        }
+      }
+      organizations(first: 10){
+        nodes{
+          id
+          name
+        }
+        totalCount
+      }
+      repositories(first: 10){
+        nodes{
+          id
+          labels(first: 10){
+            nodes{
+              id
+              name
+            }
+          }
+          description
+          name
+          primaryLanguage
+          homepageUrl
+        }
+      }
+      repositoriesContributedTo(first: 10){
+        nodes{
+          id
+          labels(first: 10){
+            nodes{
+              id
+              name
+            }
+          }
+          description
+          name
+          primaryLanguage
+          homepageUrl
+        }
+      }
+      avatarUrl
     }
   }
 `;
