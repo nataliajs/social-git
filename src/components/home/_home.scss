@@ -1,5 +1,4 @@
-.Movie{
-  //position: relative;
+.Home{
   &__title{
     @include heading('medium');
     margin-left: $m_medium;

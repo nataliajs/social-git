@@ -1,5 +1,5 @@
 import * as types from "./action-types"
-import * as queries from "../queries"
+import * as queries from "../api/queries"
 
 // actions to get a list of user
 function getUserSuccess(user) {
@@ -27,6 +27,7 @@ export function getUser() {
     dispatch(getUserLoading())
     queries.getUser()
       .then(response => {
+        console.log("getUser", response);
         dispatch(getUserSuccess(response.data.user))
       })
       .catch(error => {

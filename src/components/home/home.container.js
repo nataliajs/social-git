@@ -1,16 +1,17 @@
 import React from "react"
 import { connect } from "react-redux"
-//import store from "store"
+import store from "store"
+import { getUser } from "actions/user-actions"
 
-//import { movieProps, movieDefaultProps } from "utils/reused-proptypes"
 import { WAITING, LOADING } from "utils/network-states"
 
 import Loading from "../loading/loading"
+import Home from "./home"
 
 class HomeContainer extends React.Component {
 
   componentWillMount(){
-    //store.dispatch(getMovie(this.props.match.params.movieId));
+    store.dispatch(getUser());
   }
 
   render() {
@@ -26,16 +27,16 @@ class HomeContainer extends React.Component {
 }
 
 HomeContainer.propTypes = {
-  //movie: movieProps
+  //user: userProps
 }
 
 HomeContainer.defaultProps = {
-  //movie: movieDefaultProps
+  //user: userDefaultProps
 }
 
 const mapStateToProps = function(_store) {
   return {
-    //movie: _store.moviesState.currentMovie,
+    //user: _store.usersState.user,
     networkState: _store.userState.networkState
   }
 }

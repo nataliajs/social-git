@@ -2,23 +2,18 @@ import GraphQLClient from './client'
 
 const GET_USER = `
   {
-    organization(login: "the-road-to-learn-react") {
+    user(login: "nataliajs") {
       name
       url
-      repository(name: "the-road-to-learn-react") {
-        name
-        url
-      }
     }
   }
 `;
 
-export function getUser( id ){
+export function getUser(){
   return new Promise((resolve, reject)=>{
     GraphQLClient.post("",
       { 
-        query: GET_USER,
-        variables: { id: id }
+        query: GET_USER
       }
     )
     .then(result=>{

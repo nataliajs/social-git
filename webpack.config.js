@@ -1,6 +1,17 @@
 "use strict";
 
-var path = require('path');
+const webpack = require('webpack');
+const path = require('path');
+const dotenv = require('dotenv');
+
+// call dotenv and it will return an Object with a parsed key 
+const env = dotenv.config().parsed;
+  
+
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next]);
+  return prev;
+}, {});
 
 module.exports = {  
   output: {
@@ -35,13 +46,13 @@ module.exports = {
       utils: path.join(__dirname, 'src', 'utils'),
     }
   },
+  plugins: [ 
+    new webpack.DefinePlugin(envKeys)
+  ],
   devServer: {
     contentBase: "./dist",
     port: 8080,
     host: "127.0.0.1",
     historyApiFallback: true,
-    proxy: {
-      '/graphql': 'http://localhost:3000'
-    }
   }
 }

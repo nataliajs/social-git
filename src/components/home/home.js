@@ -1,12 +1,12 @@
 import React from "react"
-//import { movieProps, movieDefaultProps } from "utils/reused-proptypes"
+//import { userProps, userDefaultProps } from "utils/reused-proptypes"
 
-class User extends React.Component {
+class Home extends React.Component {
   render() {
     return(
-      <div className="Movie">
-        <div className="Movie__title">Holas mundo</div>
-        <div className="Movie__player">
+      <div className="Home">
+        <div className="Home__title">Holas mundo</div>
+        <div className="Home__content">
 
         </div>          
       </div>
@@ -14,12 +14,12 @@ class User extends React.Component {
   }
 }
 
-User.propTypes = {
-  //user: movieProps
+Home.propTypes = {
+  //user: userProps
 }
 
-User.defaultProps = {
-  //user: movieDefaultProps
+Home.defaultProps = {
+  //user: userDefaultProps
 }
 
-export default User
+export default Home
