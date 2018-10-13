@@ -21,7 +21,7 @@ function getUserLoading() {
     type: types.GET_USER_LOADING,
   }
 }
-/*
+
 export function getUser() {
   return dispatch => {
     dispatch(getUserLoading())
@@ -35,4 +35,3 @@ export function getUser() {
       })
   }
 }
-*/
