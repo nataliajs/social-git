@@ -15,8 +15,10 @@ const MainLayout = () => (
     <header className="Header">
       <Link to="/" className="Header__first"/>
       <div className="Header__content">
-      <div className="Header__content__text">
-      <FontAwesomeIcon icon={["fab","github"]} width="50" height="50"/>
+      <div className="Header__content__title">
+        <div className="Header__content__title__icon">
+          <FontAwesomeIcon icon={["fab","github"]} size="2x"/>
+        </div>
       </div>
       </div>
     </header>

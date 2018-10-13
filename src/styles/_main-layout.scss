@@ -51,12 +51,16 @@ button:active {
       height: 100%;
       width: 80%;
       text-align: right;
-      &__text{
+      &__title{
         position: absolute;
-        bottom: $m_medium;
+        bottom: $m_small;
         right: $m_medium;
         @include heading;
         margin-bottom: 0;
+        &__icon{
+          width: auto;
+          height: auto;
+        }
       }
     }
   }
