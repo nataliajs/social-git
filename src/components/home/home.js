@@ -1,25 +1,18 @@
 import React from "react"
-//import { userProps, userDefaultProps } from "utils/reused-proptypes"
+
+import LoginContainer from "components/login/login.container"
 
 class Home extends React.Component {
   render() {
     return(
       <div className="Home">
-        <div className="Home__title">Holas mundo</div>
         <div className="Home__content">
-
+          <div className="Home__title">Social github</div>
+          <LoginContainer />
         </div>          
       </div>
     )
   }
-}
-
-Home.propTypes = {
-  //user: userProps
-}
-
-Home.defaultProps = {
-  //user: userDefaultProps
 }
 
 export default Home

@@ -12,14 +12,15 @@
   }
 }
 
-@mixin control-btn() {  
+@mixin input() {  
   @include button-text;
-  cursor: pointer;
   background: $c_inverse;
   text-align: center; 
-  border-right: $border-medium;
-  padding: $m_medium $m_large;
+  border-bottom: $border-medium;
+  margin: $m_medium;
+  position: relative;
   &:hover{
-    background: $c_auxiliar;
+    background: $c_main_light;
+    font-weight: $fw_regular;
   }
 }

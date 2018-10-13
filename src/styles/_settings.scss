@@ -31,8 +31,8 @@ $c_inverse: #fffffa;
 
 $c_main: #74E4D7;
 $c_main_dark: darken($c_main, 10%);
+$c_main_light: lighten($c_main, 20%);
 
-//$c_secondary: rgba(245, 70, 122, 0.932);
 $c_secondary: #FF6166;
 
 $c_auxiliar: #ffff66;

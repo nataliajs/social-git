@@ -1,0 +1,14 @@
+.Home{
+  &__title{
+    @include heading('medium');
+    margin-left: $m_medium;
+    @media screen and (min-width: $beta_query) {
+      margin-left: 0;
+      margin-top: 0;
+    }
+  }
+  width: 100%;
+  @media screen and (min-width: $charlie_query) {
+    width: 80%;
+  }
+}

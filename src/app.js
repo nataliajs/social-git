@@ -7,6 +7,7 @@ import { faPlay, faGhost } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from "@fortawesome/free-brands-svg-icons"
 
 import HomeContainer from "components/home/home.container"
+import UserContainer from "components/user/user.container"
 
 library.add(faPlay, faGhost, faGithub);
 
@@ -23,9 +24,10 @@ const MainLayout = () => (
       </div>
     </header>
     <span className="main-layout__vertical-col" />
-    <main>      
+    <main>            
       <Switch>
         <Route path="/" exact component={HomeContainer} />
+        <Route path="/user" component={UserContainer} />
         <Redirect to="/" />
       </Switch>
     </main>

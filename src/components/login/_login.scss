@@ -1,0 +1,29 @@
+.Login{
+  width: 100%;
+  @media screen and (min-width: $charlie_query) {
+    width: 80%;
+  }
+  &__title{
+    @include heading('medium');
+    margin-left: $m_medium;
+    @media screen and (min-width: $beta_query) {
+      margin-left: 0;
+      margin-top: 0;
+    }
+  }
+  &__content{
+    &__form{
+      display: flex;
+      flex-direction: column;
+      &__input{
+        @include input;
+      }
+      &__submit{
+        @include button;
+      }
+      &__error{
+        color: $c_danger;
+      }
+    }
+  }
+}

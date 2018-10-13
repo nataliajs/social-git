@@ -4,7 +4,8 @@ import * as types from '../actions/action-types'
 const initialState = {
   networkState: WAITING,
   networkError: null,
-  user: {}
+  user: {},
+  userNotFound: false
 };
 
 export default function(state = initialState, action){
@@ -29,6 +30,14 @@ export default function(state = initialState, action){
         networkState: LOADING,
         networkError: null,
       }
+
+    case types.GET_USER_NOT_FOUND:
+      return {
+        ...state,
+        networkState: SUCCESS,
+        userNotFound: action.userNotFound,
+      }
+
     default:
       return state 
   }

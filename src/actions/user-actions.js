@@ -22,13 +22,27 @@ function getUserLoading() {
   }
 }
 
+function getUserNotFound(userNotFound) {
+  return {
+    type: types.GET_USER_NOT_FOUND,
+    userNotFound
+  }
+}
+
 export function getUser() {
   return dispatch => {
     dispatch(getUserLoading())
     queries.getUser()
       .then(response => {
         console.log("getUser", response);
-        dispatch(getUserSuccess(response.data.user))
+        if(response.data.user.name){
+          dispatch(getUserNotFound(false))
+          dispatch(getUserSuccess(response.data.user))       
+        }else{
+          dispatch(getUserNotFound(true))
+        }
+
+        return response.data.user;
       })
       .catch(error => {
         console.error(error)
