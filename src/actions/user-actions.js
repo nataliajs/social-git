@@ -29,20 +29,18 @@ function getUserNotFound(userNotFound) {
   }
 }
 
-export function getUser() {
+export function getUser(user) {
   return dispatch => {
     dispatch(getUserLoading())
-    queries.getUser()
+    queries.getUser(user)
       .then(response => {
-        console.log("getUser", response);
-        if(response.data.user.name){
+        if(response.data.user && response.data.user.id){
           dispatch(getUserNotFound(false))
-          dispatch(getUserSuccess(response.data.user))       
+          dispatch(getUserSuccess(response.data.user))
         }else{
           dispatch(getUserNotFound(true))
         }
-
-        return response.data.user;
+        return response.data.user
       })
       .catch(error => {
         console.error(error)

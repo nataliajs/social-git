@@ -1,16 +1,20 @@
 import GraphQLClient from './client'
 
 const GET_USER = `
-  {
-    user(login: "nataliajs") {
+  query($user: String!){
+    user(login: $user) {
       id
       name
       url
+      avatarUrl
+      login
       following (first: 10){
         nodes{
             id
             name
             url
+            avatarUrl
+            login
         }
       }
       organizations(first: 10){
@@ -31,7 +35,11 @@ const GET_USER = `
           }
           description
           name
-          primaryLanguage
+          primaryLanguage{
+            color
+            id
+            name
+          }
           homepageUrl
         }
       }
@@ -46,20 +54,27 @@ const GET_USER = `
           }
           description
           name
-          primaryLanguage
+          primaryLanguage{
+            color
+            id
+            name
+          }
           homepageUrl
         }
-      }
-      avatarUrl
+      }      
     }
   }
 `;
 
-export function getUser(){
+export function getUser(user){
+  const variables = {
+    user: user
+  }
   return new Promise((resolve, reject)=>{
     GraphQLClient.post("",
       { 
-        query: GET_USER
+        query: GET_USER,
+        variables: variables
       }
     )
     .then(result=>{

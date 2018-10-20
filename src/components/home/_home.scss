@@ -1,9 +1,8 @@
 .Home{
   &__title{
     @include heading('medium');
-    margin-left: $m_medium;
-    @media screen and (min-width: $beta_query) {
-      margin-left: 0;
+    margin-left: 0;
+    @media screen and (min-width: $beta_query) {      
       margin-top: 0;
     }
   }

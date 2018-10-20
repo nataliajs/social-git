@@ -4,23 +4,27 @@
   background: $c_inverse;
   text-align: center; 
   border: $border-medium;
-  margin: $m_medium;
+  margin: $m_medium 0;
   position: relative;
+  max-width: 300px;
   &:hover{
     background: $c_main;
-    font-weight: $fw_regular;
   }
 }
 
 @mixin input() {  
   @include button-text;
+  font-weight: $fw_regular;
   background: $c_inverse;
   text-align: center; 
+  border:none;
   border-bottom: $border-medium;
-  margin: $m_medium;
+  border-bottom-style: dashed;
+  margin: $m_medium 0;
   position: relative;
-  &:hover{
-    background: $c_main_light;
-    font-weight: $fw_regular;
+  max-width: 300px;
+  &:focus{
+    outline: none;
+    background: $c_auxiliar;
   }
 }

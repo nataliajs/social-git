@@ -66,7 +66,7 @@ button:active {
   }
   main{    
     max-width: $max_width_content;
-    //padding: $m_medium;
+    padding: $m_medium;
     @media screen and (min-width: $beta_query) {
       margin-left: 20%;
       padding: $m_large $m_large $m_large $m_large+20px;

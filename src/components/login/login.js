@@ -7,10 +7,8 @@ class Login extends React.Component {
       <div className="Login">        
         <div className="Login__content">
           <form className="Login__content__form" onSubmit={this.props.handleSubmit}>
-            <label>
-              Login name
-              <input className="Login__content__form__input" type="text" name="login" value={this.props.login} onChange={this.props.handleChange}/>
-            </label>
+            <label>Login name</label>
+            <input className="Login__content__form__input" type="text" name="login" value={this.props.login} onChange={this.props.handleChange}/>            
             <input className="Login__content__form__submit" type="submit" value="Submit" />
             {this.props.validationError?              
                 <div className="Login__content__form__error">
@@ -27,7 +25,10 @@ class Login extends React.Component {
 
 Login.propTypes = {
   name: PropTypes.string,
-  //validationError: 
+  validationError: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool
+  ]),
   handleChange: PropTypes.func,
   handleSubmit: PropTypes.func
 }

@@ -1,12 +1,14 @@
 import React from "react"
+import { ERROR } from 'utils/network-states'
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom"
 import { Link } from "react-router-dom"
+import store from "store"
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faGhost } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from "@fortawesome/free-brands-svg-icons"
 
-import HomeContainer from "components/home/home.container"
+import LoginContainer from "components/login/login.container"
 import UserContainer from "components/user/user.container"
 
 library.add(faPlay, faGhost, faGithub);
@@ -14,7 +16,7 @@ library.add(faPlay, faGhost, faGithub);
 const MainLayout = () => (
   <div className="main-layout">
     <header className="Header">
-      <Link to="/" className="Header__first"/>
+      <Link to="/login" className="Header__first"/>
       <div className="Header__content">
       <div className="Header__content__title">
         <div className="Header__content__title__icon">
@@ -26,9 +28,13 @@ const MainLayout = () => (
     <span className="main-layout__vertical-col" />
     <main>            
       <Switch>
-        <Route path="/" exact component={HomeContainer} />
-        <Route path="/user" component={UserContainer} />
-        <Redirect to="/" />
+        <Route path="/login" exact component={LoginContainer} />
+        <Route path="/user/:userName" render={ props=>(          
+            store.getState().userState.networkState === ERROR || store.getState().userState.userNotFound ?
+            (<Redirect to="/login"/>)
+            : <UserContainer {...props}/>
+          )} />
+        <Redirect to="/login" />
       </Switch>
     </main>
   </div>

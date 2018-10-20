@@ -1,7 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-import store from "store"
-import { getUser } from "actions/user-actions"
+import { withRouter } from "react-router-dom"
 
 import { ERROR, LOADING } from "utils/network-states"
 import { EMPTY_USER_ERROR, INVALID_USER_ERROR, NETWORK_ERROR } from "utils/constants"
@@ -13,7 +12,7 @@ class LoginContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      login: '',
+      userName: '',
       validationError: false
     };
   }
@@ -23,7 +22,6 @@ class LoginContainer extends React.Component {
       const error = this.props.userNotFound? INVALID_USER_ERROR: false;
       this.setState({
         ...this.state,
-        login: event.target.value,
         validationError: error
       });
     }
@@ -38,21 +36,21 @@ class LoginContainer extends React.Component {
   _handleChange = (event) => {
     this.setState({
       ...this.state,
-      login: event.target.value,
+      userName: event.target.value,
       validationError: false
     });
   }
 
   _handleSubmit = (event) => {
     event.preventDefault();
-    if(this.state.login.length===0){
+    if(this.state.userName.length===0){
       this.setState({
         ...this.state,
         validationError: EMPTY_USER_ERROR
       });
       return;
     }
-    store.dispatch(getUser(this.state.login));
+    this.props.history.push(`/user/${this.state.userName}`)    
   }
 
   render() {
@@ -87,4 +85,4 @@ const mapStateToProps = function(_store) {
     networkState: _store.userState.networkState
   }
 }
-export default connect(mapStateToProps)(LoginContainer)
+export default withRouter(connect(mapStateToProps)(LoginContainer))
