@@ -12,9 +12,12 @@ class FollowingUser extends React.Component {
           <div className="FollowingUser__content__common-items__info">
             {
               items.map(item=>{
+                const style = {
+                  color: item.color
+                }
                 return(
                   <div className="FollowingUser__content__common-items__info__name" key={item.id}>
-                    <a href={item.url? item.url: item.homePageUrl}>{item.name}</a>
+                    <a href={item.url? item.url: item.homepageUrl} style={style}>{item.name}</a>
                   </div>
                 )
               })
@@ -27,7 +30,8 @@ class FollowingUser extends React.Component {
 
   render() {
     const hasSomethingInCommon = this.props.commonOrganizations.length>0
-      && this.props.commonRepositories>0;
+      || this.props.commonRepositories.length>0
+      || this.props.commonLanguages.length>0;
     return(
       <div className="FollowingUser">
         <div className="FollowingUser__header">
@@ -51,13 +55,15 @@ class FollowingUser extends React.Component {
             this.props.isShow?
             <div className="FollowingUser__content">
               <div className="FollowingUser__content__title">
-                { hasSomethingInCommon? "You have in common": "You don't have nothing in common :(" }
+                { hasSomethingInCommon? "You have in common:": "You don't have anything in common :(" }
               </div>
               <div className="FollowingUser__content__common-items">
                 
                 { this._renderCommonContent( this.props.commonOrganizations, "Organizations") }
 
                 { this._renderCommonContent( this.props.commonRepositories, "Repositories") }
+
+                { this._renderCommonContent( this.props.commonLanguages, "Languages") }
 
               </div>
             </div>

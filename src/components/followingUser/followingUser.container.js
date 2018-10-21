@@ -19,10 +19,6 @@ class FollowingUserContainer extends React.Component {
     })
   }
 
-  getCommonRepositories = ()=>{
-
-  }
-
   getCommonOrganizations = ()=>{
     const organizations = _.filter(this.props.user.organizations.nodes, org=>{
       return _.findIndex(this.props.followingUser.organizations.nodes, followOrg=>{
@@ -43,6 +39,21 @@ class FollowingUserContainer extends React.Component {
     return commonRepositories;
   }
 
+  getCommonLanguages = ()=>{
+    const userRepositories = [...this.props.user.repositories.nodes, ...this.props.user.repositoriesContributedTo.nodes];
+    const followingUserRepositories = [...this.props.followingUser.repositories.nodes, ...this.props.followingUser.repositoriesContributedTo.nodes];
+    
+    // get the languages for the repositories that user owns or colaborate with
+    const userLanguages = _.map(userRepositories, repo=>{
+      return repo.primaryLanguage;      
+    });
+    const followingUserLanguages = _.map(followingUserRepositories, repo=>{
+      return repo.primaryLanguage;
+    });
+    // get the languages that repositories have in common
+    return _.intersectionBy(userLanguages, followingUserLanguages, "name");
+  }
+
   render() {
     return(
         <div>
@@ -50,8 +61,9 @@ class FollowingUserContainer extends React.Component {
             {...this.state}
             commonOrganizations = {this.getCommonOrganizations()}
             commonRepositories = {this.getCommonRepositories()}
-            followingUser={this.props.followingUser}
-            showInformation={this.showInformation}
+            commonLanguages = {this.getCommonLanguages()}
+            followingUser = {this.props.followingUser}
+            showInformation = {this.showInformation}
             />
         </div>
     )
