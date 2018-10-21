@@ -1,6 +1,8 @@
 import React from "react"
 import { userProps } from "utils/reused-proptypes"
 
+import FollowingUser from "components/followingUser/followingUser.container"
+
 class User extends React.Component {
   render() {
     const user = this.props.user
@@ -14,21 +16,23 @@ class User extends React.Component {
             <div className="User__content__info__name">{user.login}</div>
           </div>
           <div className="User__content__following">
-          <div className="User__content__following__title">Your friends</div>
+            <div className="User__content__following__title">Your friends</div>
+            <div className="User__content__following__users">
             {
-              user.following.nodes.map(userFollow => {
+              user.following.edges.map(followingUser => {
                 return(
-                  <div className="User__content__following__item" key={userFollow.id}>
-                    <div className="User__content__following__item__avatar">
-                      <img src={userFollow.avatarUrl} alt={`avatar ${userFollow.name}`} />
-                    </div>
-                    <div className="User__content__following__item__name">
-                      <a href={`${userFollow.url}`}>{userFollow.login}</a>
-                    </div>
-                  </div>
+                  <FollowingUser followingUser={followingUser.node} key={followingUser.node.id}/>
                 )
               })
-            }
+            }      
+            </div>      
+            {
+              user.following.totalCount > user.following.edges.length?
+                (<div className="User__content__following__more" onClick={this.props.getMoreFollowingUsers}> 
+                  >> more
+                </div>)
+              : ""
+            }            
           </div>
         </div>          
       </div>

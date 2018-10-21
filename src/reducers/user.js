@@ -38,6 +38,36 @@ export default function(state = initialState, action){
         userNotFound: action.userNotFound,
       }
 
+    case types.GET_FOLLOWING_USERS_PAGINATION_SUCCESS:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          following: {
+            ...state.user.following,
+            edges: [
+              ...state.user.following.edges,
+              ...action.user.following.edges
+            ]
+          }
+        },
+        networkFollowingUsersPaginationState: SUCCESS,
+      }
+
+    case types.GET_FOLLOWING_USERS_PAGINATION_ERROR:
+      return {
+        ...state,
+        networkFollowingUsersPaginationState: ERROR,
+        networkError: action.error,
+      }
+
+    case types.GET_FOLLOWING_USERS_PAGINATION_LOADING:
+      return {
+        ...state,
+        networkFollowingUsersPaginationState: LOADING,
+        networkError: null,
+      }
+
     default:
       return state 
   }

@@ -1,0 +1,33 @@
+.FollowingUser{
+  width: 100%;
+  @media screen and (min-width: $beta_query) {
+    width: 41%;
+  }
+  margin: $m_medium $m_small;
+  float: left;  
+  border: $border-small;
+  border-radius: 4px;
+  padding: $m_medium;
+  &__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__info{
+      display: flex;
+      align-items: center;
+      &__avatar{
+        @include avatar;
+      }
+      &__name{
+        a{
+          
+        }
+      }
+    }
+    &__arrow{
+      float: right;
+    }
+  }
+        
+  
+}

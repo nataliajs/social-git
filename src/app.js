@@ -5,13 +5,13 @@ import { Link } from "react-router-dom"
 import store from "store"
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay, faGhost } from '@fortawesome/free-solid-svg-icons'
+import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from "@fortawesome/free-brands-svg-icons"
 
 import LoginContainer from "components/login/login.container"
 import UserContainer from "components/user/user.container"
 
-library.add(faPlay, faGhost, faGithub);
+library.add(faGithub, faAngleUp, faAngleDown);
 
 const MainLayout = () => (
   <div className="main-layout">

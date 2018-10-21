@@ -1,7 +1,8 @@
 import React from "react"
 import { connect } from "react-redux"
+import _ from "lodash"
 import store from "store"
-import { getUser } from "actions/user-actions"
+import { getUser, getFollowingUsersPagination } from "actions/user-actions"
 import { userProps } from "utils/reused-proptypes"
 import { WAITING, LOADING } from "utils/network-states"
 
@@ -12,6 +13,13 @@ class UserContainer extends React.Component {
   componentWillMount(){
     store.dispatch(getUser(this.props.match.params.userName));
   }
+
+  getMoreFollowingUsers = ()=>{
+    const lastCursor = _.last(this.props.user.following.edges).cursor
+    console.log("lastCursor", lastCursor);
+    store.dispatch( getFollowingUsersPagination(this.props.user.login, lastCursor) )
+  }
+
   render() {
     return(
         <div>
@@ -19,6 +27,7 @@ class UserContainer extends React.Component {
             <Loading />
             :<User 
               user={this.props.user}
+              getMoreFollowingUsers={this.getMoreFollowingUsers}
             />
           }
         </div>

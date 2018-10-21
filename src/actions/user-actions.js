@@ -30,6 +30,7 @@ function getUserNotFound(userNotFound) {
 }
 
 export function getUser(user) {
+  console.log("getUser", user);
   return dispatch => {
     dispatch(getUserLoading())
     queries.getUser(user)
@@ -45,6 +46,42 @@ export function getUser(user) {
       .catch(error => {
         console.error(error)
         dispatch(getUserError(error))
+      })
+  }
+}
+
+// actions to manage pagination for following users
+function getFollowingUsersPaginationSuccess(user) {
+  return {
+    type: types.GET_FOLLOWING_USERS_PAGINATION_SUCCESS,
+    user
+  }
+}
+
+function getFollowingUsersPaginationError(error) {
+  return {
+    type: types.GET_FOLLOWING_USERS_PAGINATION_ERROR,
+    error
+  }
+}
+
+function getFollowingUsersPaginationLoading() {
+  return {
+    type: types.GET_FOLLOWING_USERS_PAGINATION_LOADING,
+  }
+}
+
+export function getFollowingUsersPagination( user, lastCursor ) {
+  return dispatch => {
+    dispatch(getFollowingUsersPaginationLoading())
+    console.log("action lastCursor", lastCursor);
+    queries.getFollowingUsers(user, lastCursor)
+      .then(response => {        
+        dispatch(getFollowingUsersPaginationSuccess(response.data.user))
+      })
+      .catch(error => {
+        console.error(error)
+        dispatch(getFollowingUsersPaginationError(error))
       })
   }
 }

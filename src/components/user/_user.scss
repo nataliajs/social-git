@@ -24,33 +24,19 @@
       }      
     }
     &__following{
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      &__title{
-        width: 100%;   
-        @include sub-heading;
-        margin-top: $m_large;     
+      &__users{
+
       }
-      &__item{
-        display: flex;
-        width: 100%;
-        @media screen and (min-width: $beta_query) {
-          width: 42%;
-        }
-        border: $border-small;
-        border-radius: 4px;
-        box-shadow: 2px 4px 15px #888888;
-        padding: $m_medium;
-        margin: $m_medium 0;
-        &__avatar{
-          @include avatar;
-        }
-        &__name{
-          a{
-            
-          }
-        }
+      &__title{  
+        @include sub-heading;
+        margin-top: $m_large;   
+        display: block;  
+      }
+      &__more{
+        cursor: pointer;
+        float: right;
+        @include button-text;
+        font-size: $s_small;
       }
     }
   }
