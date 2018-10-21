@@ -3,6 +3,7 @@ import * as types from '../actions/action-types'
 
 const initialState = {
   networkState: WAITING,
+  networkFollowingUsersPaginationState: WAITING,
   networkError: null,
   user: {},
   userNotFound: false

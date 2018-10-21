@@ -16,7 +16,6 @@ class UserContainer extends React.Component {
 
   getMoreFollowingUsers = ()=>{
     const lastCursor = _.last(this.props.user.following.edges).cursor
-    console.log("lastCursor", lastCursor);
     store.dispatch( getFollowingUsersPagination(this.props.user.login, lastCursor) )
   }
 
@@ -28,6 +27,7 @@ class UserContainer extends React.Component {
             :<User 
               user={this.props.user}
               getMoreFollowingUsers={this.getMoreFollowingUsers}
+              networkPaginationState={this.props.networkPaginationState}
             />
           }
         </div>
@@ -42,7 +42,8 @@ UserContainer.propTypes = {
 const mapStateToProps = function(_store) {
   return {
     user: _store.userState.user,
-    networkState: _store.userState.networkState
+    networkState: _store.userState.networkState,
+    networkPaginationState: _store.userState.networkFollowingUsersPaginationState
   }
 }
 export default connect(mapStateToProps)(UserContainer)

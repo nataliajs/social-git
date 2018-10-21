@@ -19,11 +19,37 @@ class FollowingUserContainer extends React.Component {
     })
   }
 
+  getCommonRepositories = ()=>{
+
+  }
+
+  getCommonOrganizations = ()=>{
+    const organizations = _.filter(this.props.user.organizations.nodes, org=>{
+      return _.findIndex(this.props.followingUser.organizations.nodes, followOrg=>{
+        return followOrg.id===org.id
+      }) >= 0
+    });
+    return organizations
+  }
+
+  getCommonRepositories = ()=>{
+    const userRepositories = [...this.props.user.repositories.nodes, ...this.props.user.repositoriesContributedTo.nodes];
+    const followingUserRepositories = [...this.props.followingUser.repositories.nodes, ...this.props.followingUser.repositoriesContributedTo.nodes];
+    const commonRepositories = _.filter(userRepositories, repo=>{
+      return _.findIndex(followingUserRepositories, followRepo=>{
+        return followRepo.id===repo.id
+      }) >= 0
+    });
+    return commonRepositories;
+  }
+
   render() {
     return(
         <div>
           <FollowingUser 
             {...this.state}
+            commonOrganizations = {this.getCommonOrganizations()}
+            commonRepositories = {this.getCommonRepositories()}
             followingUser={this.props.followingUser}
             showInformation={this.showInformation}
             />

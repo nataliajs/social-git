@@ -1,0 +1,62 @@
+
+/*
+*
+* FONT MIXINS
+*
+*/
+
+@mixin body {
+  font-family: $ff_body;
+  color: $c_font;
+  font-size: $s_small;
+  line-height: $lh_small;
+  font-weight: $fw_regular;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+@mixin heading($style: bold) {
+  font-size: $s_large;
+  line-height: $lh_medium;
+  font-family: $ff_heading;
+  font-weight: $fw_extra-bold;
+  @if $style == 'medium' {    
+    font-weight: $fw_bold;
+  }
+  margin: $m_medium 0;
+  color: $c_font;  
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+@mixin sub-heading($style: bold) {
+  font-size: $s_medium;
+  line-height: $lh_medium;
+  font-family: $ff_heading;
+  font-weight: $fw_bold;
+  margin: $m_small 0;
+  color: $c_main_dark;  
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+@mixin button-text {
+  font-family: $ff_body;
+  color: $c_font;
+  font-size: $s_small;
+  line-height: $lh_medium;
+  font-weight: $fw-bold;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+@mixin meta {
+  font-family: $ff_heading;
+  color: $c_base_light;
+  text-transform: uppercase;
+  font-size: $s_xsmall;
+  line-height: $lh_xsmall;
+  font-weight: $fw-bold;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}

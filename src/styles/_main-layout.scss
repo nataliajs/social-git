@@ -29,7 +29,8 @@ button:active {
   position: relative;
   box-sizing: border-box;
   min-height: 100vh;  
-  border: $border-large;
+  border-left: $border-large;
+  border-right: $border-large;
   .Header{
     height: $h_header;
     border-bottom: $border-large;  
@@ -66,6 +67,10 @@ button:active {
   }
   main{    
     max-width: $max_width_content;
+    height: 100%;
+    height: -moz-available;
+    height: -webkit-fill-available;
+    height: fill-available;
     padding: $m_medium;
     @media screen and (min-width: $beta_query) {
       margin-left: 20%;

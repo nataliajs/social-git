@@ -1,6 +1,6 @@
 .User{
   &__title{
-    @include heading('medium');
+    @include heading('medium');    
     margin-left: $m_medium;
     @media screen and (min-width: $beta_query) {
       margin-left: 0;
@@ -18,7 +18,7 @@
         @include avatar;
       }
       &__name{
-        @include sub-heading;
+        @include heading;
         flex-grow: 2;
         border-bottom: $border-small;
       }      
@@ -37,6 +37,11 @@
         float: right;
         @include button-text;
         font-size: $s_small;
+      }
+      &__loading{
+        position: relative;
+        height: 50px;
+        clear: both;
       }
     }
   }

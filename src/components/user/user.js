@@ -1,7 +1,9 @@
 import React from "react"
 import { userProps } from "utils/reused-proptypes"
 
+import { LOADING, WAITING } from "utils/network-states"
 import FollowingUser from "components/followingUser/followingUser.container"
+import Loading from "components/loading/loading"
 
 class User extends React.Component {
   render() {
@@ -25,9 +27,16 @@ class User extends React.Component {
                 )
               })
             }      
-            </div>      
+            </div>  
+            { 
+              this.props.networkPaginationState === LOADING ?
+              <div className="User__content__following__loading">
+                <Loading />
+              </div>
+              :""
+            }    
             {
-              user.following.totalCount > user.following.edges.length?
+              user.following.totalCount > user.following.edges.length && this.props.networkPaginationState !== LOADING?
                 (<div className="User__content__following__more" onClick={this.props.getMoreFollowingUsers}> 
                   >> more
                 </div>)

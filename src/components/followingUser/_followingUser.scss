@@ -28,6 +28,25 @@
       float: right;
     }
   }
-        
+  &__content{    
+    padding: $m_small;
+    &__title{
+      margin: $m_medium 0;
+      font-weight: $fw-bold;
+    }
+    &__common-items{
+      &__wrapper{
+        margin-bottom: $m_small;
+      }
+      &__title{
+        @include meta;
+      }
+      &__info{
+        &__name{
+
+        }
+      }
+    }
+  }   
   
 }

@@ -74,8 +74,7 @@ function getFollowingUsersPaginationLoading() {
 export function getFollowingUsersPagination( user, lastCursor ) {
   return dispatch => {
     dispatch(getFollowingUsersPaginationLoading())
-    console.log("action lastCursor", lastCursor);
-    queries.getFollowingUsers(user, lastCursor)
+    queries.getUser(user, lastCursor)
       .then(response => {        
         dispatch(getFollowingUsersPaginationSuccess(response.data.user))
       })
