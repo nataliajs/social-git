@@ -1,7 +1,7 @@
 import React from "react"
 import { userProps } from "utils/reused-proptypes"
 
-import { LOADING, WAITING } from "utils/network-states"
+import { LOADING } from "utils/network-states"
 import FollowingUser from "components/followingUser/followingUser.container"
 import Loading from "components/loading/loading"
 
@@ -18,7 +18,7 @@ class User extends React.Component {
             <div className="User__content__info__name">{user.login}</div>
           </div>
           <div className="User__content__following">
-            <div className="User__content__following__title">Your friends</div>
+            <div className="User__content__following__title">You follow</div>
             <div className="User__content__following__users">
             {
               user.following.edges.map(followingUser => {

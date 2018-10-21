@@ -44,7 +44,7 @@ const GET_USER = `
                   id
                   name
                 }
-                homepageUrl
+                url
               }
             }
             repositoriesContributedTo(first: 10){
@@ -64,7 +64,7 @@ const GET_USER = `
                   id
                   name
                 }
-                homepageUrl
+                url
               }
             }
           }
@@ -95,7 +95,7 @@ const GET_USER = `
             id
             name
           }
-          homepageUrl
+          url
         }
       }
       repositoriesContributedTo(first: 10){
@@ -115,7 +115,7 @@ const GET_USER = `
             id
             name
           }
-          homepageUrl
+          url
         }
       }      
     }

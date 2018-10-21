@@ -17,7 +17,7 @@ class FollowingUser extends React.Component {
                 }
                 return(
                   <div className="FollowingUser__content__common-items__info__name" key={item.id}>
-                    <a href={item.url? item.url: item.homepageUrl} style={style}>{item.name}</a>
+                    <a href={item.url} style={style}>{item.name}</a>
                   </div>
                 )
               })
@@ -55,7 +55,7 @@ class FollowingUser extends React.Component {
             this.props.isShow?
             <div className="FollowingUser__content">
               <div className="FollowingUser__content__title">
-                { hasSomethingInCommon? "You have in common:": "You don't have anything in common :(" }
+                { hasSomethingInCommon? "You have in common:": "You have nothing in common :(" }
               </div>
               <div className="FollowingUser__content__common-items">
                 
@@ -78,6 +78,7 @@ FollowingUser.propTypes = {
   followingUser: userProps,
   showInformation: Proptypes.func,
   commonOrganizations: Proptypes.array,
-  commonRepositories: Proptypes.array
+  commonRepositories: Proptypes.array,
+  isShow: Proptypes.bool
 }
 export default FollowingUser
